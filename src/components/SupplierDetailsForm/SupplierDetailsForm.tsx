@@ -83,7 +83,7 @@ export const SupplierDetailsForm: React.FC<OwnProps> = ({data: supplier, saveHan
                     fullWidth
                     variant="outlined"
                     error={!!formState.errors.iban}
-                    helperText={formState.errors.bicSwift ? formState.errors.iban : null}
+                    helperText={formState.errors.iban ? formState.errors.iban : null}
                     value={formState.values.iban}
                     id="iban-input"
                     label="IBAN:"
