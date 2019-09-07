@@ -62,14 +62,16 @@ const getActions = (setState: Dispatch<SetStateAction<AppState>>) => ({
     },
 
     filterSuppliers: (q?: string) =>
-        setState( state => ({...state, filter: q}))
-});
+        setState( state => ({...state, filter: q})),
 
+    hydrateState: (newState: AppState) =>
+        setState( _ => newState )
+});
 
 // State selectors
 
 export const selectAllOrFilteredSuppliers = (state: AppState) =>
-    getAllOrFilteredSuppliers(state.filter!)(selectAllSuppliers(state));
+    getAllOrFilteredSuppliers(state.filter)(selectAllSuppliers(state));
 
 export const selectFilterQuery = (state: AppState) => state.filter;
 

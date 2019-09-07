@@ -62,9 +62,20 @@ const App: React.FC = () => {
 
 
     useEffect(() =>  {
-        fetchSuppliers()
-            .then(suppliers => actions.addAll(suppliers));
+        const persistedState = localStorage.getItem('appState');
+
+        if(persistedState) {
+            actions.hydrateState(JSON.parse(persistedState))
+        }else{
+            fetchSuppliers()
+                .then(suppliers => actions.addAll(suppliers));
+        }
+
     }, []);
+
+    useEffect(() => {
+        window.localStorage.setItem('appState', JSON.stringify(state))
+    }, [currentSupplier]);
 
     return (
         <Container maxWidth="md">

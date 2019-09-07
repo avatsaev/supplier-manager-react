@@ -19,7 +19,7 @@ export const byName =
         (supplier: Supplier) =>
             supplier.name.toLowerCase().match(`${escapeRegExp(name).toLowerCase()}.*`);
 
-export const getAllOrFilteredSuppliers = (q: string) => (suppliers: Supplier[]) =>
+export const getAllOrFilteredSuppliers = (q?: string) => (suppliers: Supplier[]) =>
     q && q.length > 0 ? suppliers.filter(byName(q)) : suppliers;
 
 export const normalizeSupplier = (s: Supplier) => {
