@@ -45,8 +45,8 @@ const getActions = (setState: Dispatch<SetStateAction<AppState>>) => ({
     addAll: (suppliers: Supplier[]) =>
         setState(state => suppliersEntityAdapter.addAll(suppliers.map(normalizeSupplier), state)),
 
-    upsertOne: (supplier: Supplier) =>
-        setState(state => suppliersEntityAdapter.upsertOne(supplier, state)),
+    upsertMany: (suppliers: Supplier[]) =>
+        setState(state => suppliersEntityAdapter.upsertMany(suppliers.map(normalizeSupplier), state)),
 
     updateOne: (id: string, changes: Partial<Supplier>) =>
         setState( state =>  suppliersEntityAdapter.updateOne({id, changes}, state)),

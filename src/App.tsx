@@ -5,6 +5,7 @@ import Typography from '@material-ui/core/Typography';
 import Snackbar from '@material-ui/core/Snackbar';
 
 import useAppState, {
+    AppState,
     selectAllOrFilteredSuppliers,
     selectFilterQuery,
     selectTotalSuppliers,
@@ -65,16 +66,18 @@ const App: React.FC = () => {
         const persistedState = localStorage.getItem('appState');
 
         if(persistedState) {
-            actions.hydrateState(JSON.parse(persistedState))
-        }else{
-            fetchSuppliers()
-                .then(suppliers => actions.addAll(suppliers));
+            const hydratedState = JSON.parse(persistedState) as AppState;
+            actions.hydrateState(hydratedState);
         }
+
+        fetchSuppliers().then(actions.upsertMany);
 
     }, []);
 
     useEffect(() => {
-        window.localStorage.setItem('appState', JSON.stringify(state))
+        if(state.ids.length > 0) {
+            window.localStorage.setItem('appState', JSON.stringify(state))
+        }
     }, [currentSupplier]);
 
     return (
