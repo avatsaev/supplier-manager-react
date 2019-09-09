@@ -70,13 +70,15 @@ const App: React.FC = () => {
             actions.hydrateState(hydratedState);
         }
 
-        fetchSuppliers().then(actions.upsertMany);
+        fetchSuppliers()
+            .then(actions.upsertMany)
+            .catch(_ => setSnackbarState({isOpen: true, message: "Error: couldn't load suppliers"}));
 
     }, []);
 
     useEffect(() => {
         if(state.ids.length > 0) {
-            window.localStorage.setItem('appState', JSON.stringify(state))
+            localStorage.setItem('appState', JSON.stringify({...state, filter: ''}))
         }
     }, [currentSupplier]);
 

@@ -4,10 +4,11 @@
 import {Supplier} from '../models/Supplier';
 
 export const http = <T>(request: RequestInfo): Promise<T> =>
-    new Promise<T>((resolve) => {
+    new Promise<T>((resolve, reject) => {
       fetch(request)
           .then(response => response.json())
-          .then(body => resolve(body));
+          .then(body => resolve(body))
+          .catch(reject);
     });
 
 

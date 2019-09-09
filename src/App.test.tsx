@@ -20,7 +20,7 @@ describe("<App>", () => {
     });
 
     it('should display header text', () => {
-        expect(wrapper.find('h2').html()).toMatch(/suppliers/i)
+        expect(wrapper.find('h3').html()).toMatch(/suppliers/i)
     });
 
 });
