@@ -10,7 +10,7 @@ export const CategoryChip: React.FC<OwnProps> = ({data: category}) => {
     return (
         category ?
             <Box display="inline" mr="5px">
-                <Chip  size="small" label={category} color="primary"/>
+                <Chip size="small" label={category} color="primary"/>
             </Box>  : null
     )
 };

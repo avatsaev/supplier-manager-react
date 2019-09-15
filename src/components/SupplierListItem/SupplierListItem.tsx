@@ -38,7 +38,7 @@ export const SupplierListItem: React.FC<OwnProps> = ({data: supplier, detailsCli
                 secondary={
 
                     <Fragment>
-                        <span>
+                        <span className='avg-transaction'>
                           AVG. TRANSACTION: {avgTransaction}
                         </span>
 

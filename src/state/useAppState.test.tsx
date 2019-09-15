@@ -74,19 +74,20 @@ describe('App state manager', () => {
     expect(state.ids.length).toEqual(4);
   });
 
-  it('should normalize suppliers (addAll)', () => {
+  it('should normalize suppliers upon addAll', () => {
     act(() => actions.addAll(suppliers));
     expect(selectAllOrFilteredSuppliers(state)).toEqual(suppliers.map(normalizeSupplier));
   });
 
 
-  it('should normalize suppliers (upsertMany)', () => {
+  it('should normalize suppliers upon upsertMany)', () => {
     act(() => actions.upsertMany(suppliers));
     expect(selectAllOrFilteredSuppliers(state)).toEqual(suppliers.map(normalizeSupplier));
   });
 
   it('should filter suppliers', () => {
     act(() => actions.addAll(suppliers, state));
+    expect(selectAllOrFilteredSuppliers(state).length).toEqual(4);
     act(() => actions.filterSuppliers('carREf'));
     expect(selectAllOrFilteredSuppliers(state).length).toEqual(1);
   });
@@ -98,6 +99,8 @@ describe('App state manager', () => {
       bicSwift: 'bix swift'
     };
     act(() => actions.addAll(suppliers, state));
+
+    expect(state.entities[id].bankDetails).toBeFalsy();
     act(() => actions.updateOne(id, {bankDetails}));
 
     const updatedSupplier = state.entities[id];

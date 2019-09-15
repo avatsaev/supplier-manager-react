@@ -6,11 +6,11 @@ import DialogTitle from '@material-ui/core/DialogTitle';
 
 export interface OwnProps {
     title?: string;
-    isOpen: boolean;
+    isOpen?: boolean;
     closeHandler?: () => void;
 }
 
-export const BaseDialog: React.FC<OwnProps> = ({title='', isOpen, closeHandler, children}) => {
+export const BaseDialog: React.FC<OwnProps> = ({title='', isOpen = false, closeHandler, children}) => {
 
     return (
         <Dialog

@@ -80,6 +80,7 @@ export const SupplierDetailsForm: React.FC<OwnProps> = ({data: supplier, saveHan
             <Box mb="15px" >
 
                 <TextField
+                    className='iban-text-field'
                     fullWidth
                     variant="outlined"
                     error={!!formState.errors.iban}
@@ -95,6 +96,7 @@ export const SupplierDetailsForm: React.FC<OwnProps> = ({data: supplier, saveHan
             <Box mb="15px">
 
                 <TextField
+                    className='bic-text-field'
                     fullWidth
                     variant="outlined"
                     error={!!formState.errors.bicSwift}
