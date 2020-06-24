@@ -1,15 +1,4 @@
 {
-  "carrefour": {
-    "id": "5d48260aa86783fd68f531d3",
-    "rank": 0,
-    "isActive": false,
-    "average_transaction_amount": "1216.6149",
-    "logo_url": "https://logo.clearbit.com/carrefour.com",
-    "name": "CARREFOUR",
-    "phone": "+1 (997) 445-2391",
-    "address": "407 Little Street, Norris, Missouri, 3313",
-    "categories": ["AIRLINES"]
-  },
   "apple": {
     "id": "5d48260a0af5155a05ac5e8f",
     "rank": 1,
